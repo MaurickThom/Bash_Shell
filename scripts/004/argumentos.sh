@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# $0 se refiere al nombre
+# el numero de digitos son del $1 al ${10} si son mas de un digito se utiliza {}
 argv_1=$1
 argv_2=$2
 
