@@ -26,4 +26,8 @@ La idea básica de bash scripting o programación en shell es poder
 
 Estos comandos son colocados en un archivo de texto simple y ejecutados en terminal por el usuario
 
+- El comando `type comando` o `type -a comando` o `type -t comando`  nos verifica el nombre y
+	donde se encuentra, es una buena practica usar estos comandos antes de nombrarlo para poder
+	evitar los nombres repetidos de archivos
+
 [***Ya tengo un repositorio con mi configuracion de vim***](https://github.com/MaurickThom/VIM)
