@@ -29,5 +29,8 @@ NOMBRE=thom
 
 echo "Opcion : $OPCION y nombre : $NOMBRE" 
 
+export NOMBRE
 
+# despues lo que haremos es llamaer al siguiente script
+./variables_2.sh
 
