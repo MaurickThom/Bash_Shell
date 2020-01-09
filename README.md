@@ -38,4 +38,16 @@ en una variable
 - Usando el backtik
 - Usando el signo dolar con el formato $(comando)
 
+## **¿Cómo realizar el debug de un script**
+
+Hay dos opciones para realizar el debug utilizando el comando bash
+
+- `-v` Utilizado para ver el resultado detallado de nuestro script, evaluado linea por linea
+- `-x` Utilizado para desplegar la información de los comandos que son utilizados, capturando
+	el comando salida
+
+	- `bash -v ./script.sh` Esto me mostrara todo es como un cat + ./script.sh
+	- `bash -x ./script.sh` aquí solo me mostra el comando en un `+` al comienzo
+		y posteriormente el output del comando
+ 
 [***Ya tengo un repositorio con mi configuracion de vim***](https://github.com/MaurickThom/VIM)
