@@ -25,3 +25,5 @@ La idea básica de bash scripting o programación en shell es poder
 ***ejecutar múltiples comandos de forma secuencial para automatizar una tarea en especifico***
 
 Estos comandos son colocados en un archivo de texto simple y ejecutados en terminal por el usuario
+
+[***Ya tengo un repositorio con mi configuracion de vim***](https://github.com/MaurickThom/VIM)
