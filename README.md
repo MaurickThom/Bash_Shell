@@ -35,7 +35,7 @@ Estos comandos son colocados en un archivo de texto simple y ejecutados en termi
 La idea de la sustitución de comandos en variables es almacenas las salidas de una ejecución de un comando
 en una variable
 
-- Usando el backtik
+- Usando el backtick
 - Usando el signo dolar con el formato $(comando)
 
 ## **¿Cómo realizar el debug de un script**
