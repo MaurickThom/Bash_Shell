@@ -30,4 +30,12 @@ Estos comandos son colocados en un archivo de texto simple y ejecutados en termi
 	donde se encuentra, es una buena practica usar estos comandos antes de nombrarlo para poder
 	evitar los nombres repetidos de archivos
 
+## **¿Cómo realizar la sustitución de comandos en variables?**i
+
+La idea de la sustitución de comandos en variables es almacenas las salidas de una ejecución de un comando
+en una variable
+
+- Usando el backtik
+- Usando el signo dolar con el formato $(comando)
+
 [***Ya tengo un repositorio con mi configuracion de vim***](https://github.com/MaurickThom/VIM)
