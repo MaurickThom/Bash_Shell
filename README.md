@@ -61,7 +61,9 @@ Hay dos opciones para realizar el debug utilizando el comando bash
 
 	read -n8 -p "DNI" dni
 	echo $dni
-
 ```
 
-[***Ya tengo un repositorio con mi configuracion de vim***](https://github.com/MaurickThom/VIM)
+- `source` : 
+
+-[***Ya tengo un repositorio con mi configuracion de vim***](https://github.com/MaurickThom/VIM)
+-[**Parametros**](https://likegeeks.com/es/scripting-de-bash-parametros-y-opciones)
