@@ -49,5 +49,9 @@ Hay dos opciones para realizar el debug utilizando el comando bash
 	- `bash -v ./script.sh` Esto me mostrara todo es como un cat + ./script.sh
 	- `bash -x ./script.sh` aquí solo me mostra el comando en un `+` al comienzo
 		y posteriormente el output del comando
- 
+
+- `read -s` : Oculta la información entrante por el propio usuario
+- `read -n#numero ` : `read -n3` eso significa que validara el tamaño solo tomará los 3 primeos
+- `read -p` indica que hay que dejar la información ingresada en la variable siguiente
+
 [***Ya tengo un repositorio con mi configuracion de vim***](https://github.com/MaurickThom/VIM)
