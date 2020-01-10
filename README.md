@@ -55,7 +55,7 @@ Hay dos opciones para realizar el debug utilizando el comando bash
 - `read -p` indica que hay que dejar la información ingresada en la variable siguiente
 
 ```sh
-	# ojo el -p va siempre al final 
+	# ojo el -p va siempre al final
 	read -s -p "Clave " clave
 	echo $clave
 
@@ -63,7 +63,13 @@ Hay dos opciones para realizar el debug utilizando el comando bash
 	echo $dni
 ```
 
-- `source` : 
+## **Comando `source`**
+
+Cuando se ejecuta desde shell un comando o un script, se crea un subproceso(procesos hijo) de la shell que ejecuta
+el comando o el script (proceso padre). Si el script que ejecuta el proceso hijo crea o modifica alguna variable 
+de entorno, esos cambios o variables desaparecen cuando finaliza el comando o script.
+
+El comando source ayudará a persistir estos cambios `source script.sh` o `source comando`
 
 - [***Ya tengo un repositorio con mi configuracion de vim***](https://github.com/MaurickThom/VIM)
 - [**Parametros**](https://likegeeks.com/es/scripting-de-bash-parametros-y-opciones)
