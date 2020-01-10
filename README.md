@@ -54,4 +54,14 @@ Hay dos opciones para realizar el debug utilizando el comando bash
 - `read -n#numero ` : `read -n3` eso significa que validara el tamaño solo tomará los 3 primeos
 - `read -p` indica que hay que dejar la información ingresada en la variable siguiente
 
+```sh
+	# ojo el -p va siempre al final 
+	read -s -p "Clave " clave
+	echo $clave
+
+	read -n8 -p "DNI" dni
+	echo $dni
+
+```
+
 [***Ya tengo un repositorio con mi configuracion de vim***](https://github.com/MaurickThom/VIM)
