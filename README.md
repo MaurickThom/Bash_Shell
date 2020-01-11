@@ -73,3 +73,6 @@ El comando source ayudará a persistir estos cambios `source script.sh` o `sourc
 
 - [***Ya tengo un repositorio con mi configuracion de vim***](https://github.com/MaurickThom/VIM)
 - [**Parametros**](https://likegeeks.com/es/scripting-de-bash-parametros-y-opciones)
+- [**[] && [[]]**](https://stackoverflow.com/questions/2188199/how-to-use-double-or-single-brackets-parentheses-curly-braces)
+
+
