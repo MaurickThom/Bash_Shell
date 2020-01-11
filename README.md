@@ -79,3 +79,7 @@ El comando source ayudará a persistir estos cambios `source script.sh` o `sourc
 - [**SHELL**](https://blog.desdelinux.net/shell-bash-y-scripts-todo-sobre-shell-scripting/)
 - [**Guias de estilo BASH SCRIPT**](https://lignux.com/guia-de-estilos-para-bash-script/)
 - [**Carpetas**](https://blog.desdelinux.net/comprobar-si-un-archivo-o-carpeta-existe-o-no-y-mas-con-ciclo-if/)
+- [**Here Documents**](https://linuxhint.com/bash-heredoc-tutorial/)
+
+
+
