@@ -1,5 +1,7 @@
 # **Programacion Bash Shell Platzi**
 
+![alt](images/Screenshot&#32;from&#32;2020-01-11&#32;01-59-27.png)
+
 ## **Linux :**
 
 Linux consta de algunas partes principales
