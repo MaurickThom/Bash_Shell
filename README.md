@@ -77,4 +77,4 @@ El comando source ayudará a persistir estos cambios `source script.sh` o `sourc
 - [**Parametros**](https://likegeeks.com/es/scripting-de-bash-parametros-y-opciones)
 - [**[] && [[]]**](https://stackoverflow.com/questions/2188199/how-to-use-double-or-single-brackets-parentheses-curly-braces)
 - [**SHELL**](https://blog.desdelinux.net/shell-bash-y-scripts-todo-sobre-shell-scripting/)
-
+- [**Guias de estilo BASH SCRIPT**](https://lignux.com/guia-de-estilos-para-bash-script/)
