@@ -1,6 +1,11 @@
 # **Programacion Bash Shell Platzi**
 
+> Esta es mi antiguo setup , tenia el error del tmux con zsh
 ![alt](images/Screenshot&#32;from&#32;2020-01-11&#32;01-59-27.png)
+
+> Ahora ya está arreglado <3
+![alt](images/mejorado.png)
+
 
 ## **Linux :**
 
