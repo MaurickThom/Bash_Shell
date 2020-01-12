@@ -86,5 +86,7 @@ El comando source ayudará a persistir estos cambios `source script.sh` o `sourc
 - [**Carpetas**](https://blog.desdelinux.net/comprobar-si-un-archivo-o-carpeta-existe-o-no-y-mas-con-ciclo-if/)
 - [**Here Documents**](https://linuxhint.com/bash-heredoc-tutorial/)
 - [**Guia avanzada de bash scripting**](http://tldp.org/LDP/abs/html/)
-
+- [**gzip-1**](https://www.ionos.es/digitalguide/servidores/know-how/que-es-gzip-y-cuales-son-sus-ventajas/)
+- [**gzip-2**](https://www.unix.com/shell-programming-and-scripting/212601-changing-file-name-while-compressing.html)
+- [**pbzip2**](https://www.muylinux.com/2012/05/31/pbzip2-comprime-y-descomprime-aprovechando-tu-cpu-multi-core/)
 
