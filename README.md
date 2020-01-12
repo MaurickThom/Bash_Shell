@@ -104,3 +104,4 @@ El comando source ayudará a persistir estos cambios `source script.sh` o `sourc
 - [**pbzip2**](https://www.muylinux.com/2012/05/31/pbzip2-comprime-y-descomprime-aprovechando-tu-cpu-multi-core/)
 - [**rsync_1**](https://www.hostinger.es/tutoriales/rsync-linux/)
 - [**rsync_2**](https://www.linuxtotal.com.mx/index.php?cont=rsync-manual-de-uso)
+- [**rsync_3**](https://www.tecmint.com/rsync-local-remote-file-synchronization-commands/)
