@@ -31,7 +31,7 @@ Linux consta de algunas partes principales
 La idea básica de bash scripting o programación en shell es poder
 ***ejecutar múltiples comandos de forma secuencial para automatizar una tarea en especifico***
 
-Estos comandos son colocados en un archivo de texto simple y ejecutados en terminal por el usuario
+ystos comandos son colocados en un archivo de texto simple y ejecutados en terminal por el usuario
 
 - El comando `type comando` o `type -a comando` o `type -t comando`  nos verifica el nombre y
 	donde se encuentra, es una buena practica usar estos comandos antes de nombrarlo para poder
@@ -80,6 +80,16 @@ El comando source ayudará a persistir estos cambios `source script.sh` o `sourc
 
 - `rsync` : sincronización remota
 
+```sh
+    read -p "Ingresa el host : " host
+    read -p "Ingresa el usuario : " usuario
+
+    echo "Lo que hará ahora es comprimir(-z) y los archivos con todo permisos(-a) hacia un acceso remoto, mostrando infomacion adicional del proceso(-v)"
+    echo "\$(pwd) como esta dentro de un archivo pwd va entre \$ y () pero si todo el proximo comando va directamente en la terminal se pudede omitir"
+    rsync -avz $(pwd) $usuario:host:/Users/thom//Downloads/Backup
+
+```
+
 
 - [***Ya tengo un repositorio con mi configuracion de vim***](https://github.com/MaurickThom/VIM)
 - [**Parametros**](https://likegeeks.com/es/scripting-de-bash-parametros-y-opciones)
@@ -92,4 +102,5 @@ El comando source ayudará a persistir estos cambios `source script.sh` o `sourc
 - [**gzip-1**](https://www.ionos.es/digitalguide/servidores/know-how/que-es-gzip-y-cuales-son-sus-ventajas/)
 - [**gzip-2**](https://www.unix.com/shell-programming-and-scripting/212601-changing-file-name-while-compressing.html)
 - [**pbzip2**](https://www.muylinux.com/2012/05/31/pbzip2-comprime-y-descomprime-aprovechando-tu-cpu-multi-core/)
-- [**rsync**](https://www.hostinger.es/tutoriales/rsync-linux/)
+- [**rsync_1**](https://www.hostinger.es/tutoriales/rsync-linux/)
+- [**rsync_2**](https://www.linuxtotal.com.mx/index.php?cont=rsync-manual-de-uso)
