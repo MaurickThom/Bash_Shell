@@ -78,6 +78,9 @@ de entorno, esos cambios o variables desaparecen cuando finaliza el comando o sc
 
 El comando source ayudará a persistir estos cambios `source script.sh` o `source comando`
 
+- `rsync` : sincronización remota
+
+
 - [***Ya tengo un repositorio con mi configuracion de vim***](https://github.com/MaurickThom/VIM)
 - [**Parametros**](https://likegeeks.com/es/scripting-de-bash-parametros-y-opciones)
 - [**[] && [[]]**](https://stackoverflow.com/questions/2188199/how-to-use-double-or-single-brackets-parentheses-curly-braces)
@@ -89,4 +92,4 @@ El comando source ayudará a persistir estos cambios `source script.sh` o `sourc
 - [**gzip-1**](https://www.ionos.es/digitalguide/servidores/know-how/que-es-gzip-y-cuales-son-sus-ventajas/)
 - [**gzip-2**](https://www.unix.com/shell-programming-and-scripting/212601-changing-file-name-while-compressing.html)
 - [**pbzip2**](https://www.muylinux.com/2012/05/31/pbzip2-comprime-y-descomprime-aprovechando-tu-cpu-multi-core/)
-
+- [**rsync**](https://www.hostinger.es/tutoriales/rsync-linux/)
