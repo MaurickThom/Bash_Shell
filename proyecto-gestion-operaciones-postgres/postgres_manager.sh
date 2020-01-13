@@ -30,8 +30,31 @@ install_postgreSQL () {
         sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD '{$password_postgres}';"
 
         # Ahora toca habiliar los servicios de postgres
-        echo $password_sudo | sudo -S systemctl enable postgresql.service
-        echo $password_sudo | sudo -S systemctl start postgresql.service
+        echo $password_sudo | sudo -S systemctl enable postgresql.service # activando el servicio
+        echo $password_sudo | sudo -S systemctl start postgresql.service # levantando el servicio
     fi
-    read -n1 -s -r -p "PRESIONE [ENTER] PARA CONTINUAR ... " # 
+    read -n 1 -s -r -p "PRESIONE [ENTER] PARA CONTINUAR ... " # -r enter 
 }
+
+uninstall_postgreSQL () {
+    echo -e "\n"
+    read -s -p "Ingresa la contraseña de sudo " password_sudo
+    echo -e "\n"
+    echo $password_sudo | sudo -S systemctl stop postgresql.service
+    echo $password_sudo | sudo -S apt-get -y --purge remove postgresql\*
+    echo $password_sudo | sudo -S rm -rf /etc/postgresql
+    echo $password_sudo | sudo -S rm -rf /etc/postgresql-common
+    echo $password_sudo | sudo -S rm -r /etc/postgresql-common
+    echo $password_sudo | sudo -S rm -rf /var/lib/postgresql
+    echo $password_sudo | sudo -S rm -r /var/lib/postgresql
+    echo $password_sudo | sudo -S rm -r /etc/postgresql
+    echo $password_sudo | sudo -S userdel -r postgres
+    echo $password_sudo | sudo -S groupdel postgresql
+
+    read -n 1 -s -r -p "PRESIONE [ENTER] PARA CONTINUAR ... " # -r enter 
+}
+
+
+
+
+
