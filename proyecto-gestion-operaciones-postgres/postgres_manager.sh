@@ -20,12 +20,12 @@ install_postgreSQL () {
     verifyInstallPostgres=$(which psql)
     if [[ $? -eq 0 ]] ;then # el $? me dice del ultimo comando ejecutado,  0 : se resolvio con exito
         echo -e "\n Postgres ya se encuentra instalado"
-    else
-        echo -e "\n"
-        read -s -p "Ingrese la contraseña del sudo : " password_sudo
-        read -s -p "Ingrese la contraseña que utilizará en postgres : " password_postgres
-        echo -e "\n"
-        echo $password_sudo | sudo -S apt update # lo que -S es leer el output de echo y colocarlo como input al sudo --stdin
-        echo $password_sudo | sudo -S apt-get -y install postgresql postgresl-contrib# -y:  yes a todas las preguntas
+        return ;
     fi
+    echo -e "\n"
+    read -s -p "Ingrese la contraseña del sudo : " password_sudo
+    read -s -p "Ingrese la contraseña que utilizará en postgres : " password_postgres
+    echo -e "\n"
+    echo $password_sudo | sudo -S apt update # lo que -S es leer el output de echo y colocarlo como input al sudo --stdin
+    echo $password_sudo | sudo -S apt-get -y install postgresql postgresl-contrib # -y:  yes a todas las preguntas
 }
