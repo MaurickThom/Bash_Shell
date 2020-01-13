@@ -33,17 +33,16 @@ install_postgreSQL () {
         echo $password_sudo | sudo -S systemctl enable postgresql.service # activando el servicio
         echo $password_sudo | sudo -S systemctl start postgresql.service # levantando el servicio
     fi
-    read -n 1 -s -r -p "PRESIONE [ENTER] PARA CONTINUAR ... " # -r enter 
+    read -n1 -s -r -p "PRESIONE [ENTER] PARA CONTINUAR ... " # -r enter 
 }
 
 uninstall_postgreSQL () {
     echo -e "\n"
-    read -s -p "Ingresa la contraseña de sudo " password_sudo
+    read -s -p "Ingresa la contraseña de sudo : " password_sudo
     echo -e "\n"
     echo $password_sudo | sudo -S systemctl stop postgresql.service
     echo $password_sudo | sudo -S apt-get -y --purge remove postgresql\*
-    echo $password_sudo | sudo
-    -S rm -rf /etc/postgresql
+    echo $password_sudo | sudo -S rm -rf /etc/postgresql
     echo $password_sudo | sudo -S rm -rf /etc/postgresql-common
     echo $password_sudo | sudo -S rm -r /etc/postgresql-common
     echo $password_sudo | sudo -S rm -rf /var/lib/postgresql
@@ -52,7 +51,7 @@ uninstall_postgreSQL () {
     echo $password_sudo | sudo -S userdel -r postgres # eliminado el usuario
     echo $password_sudo | sudo -S groupdel postgresql # elimando el grupo
 
-    read -n 1 -s -r -p "PRESIONE [ENTER] PARA CONTINUAR ... " # -r enter 
+    read -n1 -s -r -p "PRESIONE [ENTER] PARA CONTINUAR ... " # -r enter 
 }
 
 while :
@@ -69,8 +68,8 @@ do
     echo "3. Crear Backup"
     echo "4. Restaurar Backup"
     echo "5. Salir"
-
-    read -n1 -e -p "\nIngrese una opción [1-5] : " option
+    echo -e "\n"
+    read -n1 -p "Ingrese una opción [1-5] : " option
 
     case $option in
         1)
@@ -78,7 +77,7 @@ do
             sleep 3
             ;;
         2)
-            uninstall_postgresSQL
+            uninstall_postgreSQL
             sleep 3
             ;;
         3)
@@ -98,7 +97,7 @@ do
             ;;
         *) 
             echo -e "\nOpcion incorrecta"
-            sleep 2
+            sleep 1
             ;;
     esac
 done
