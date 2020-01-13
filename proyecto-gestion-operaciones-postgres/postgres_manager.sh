@@ -12,9 +12,6 @@ COMMENT
 current_date=`date +%Y_%m_%d`
 option=0
 
-
-
-
 install_postgreSQL () {
     echo -e "\nVerificando instalación de postgres ... "
     verifyInstallPostgres=$(which psql)
@@ -28,4 +25,9 @@ install_postgreSQL () {
     echo -e "\n"
     echo $password_sudo | sudo -S apt update # lo que -S es leer el output de echo y colocarlo como input al sudo --stdin
     echo $password_sudo | sudo -S apt-get -y install postgresql postgresl-contrib # -y:  yes a todas las preguntas
+    # cuando ejecutados algun comando con sudo , por defecto el usuario es root y posteriormente nos pide la contraseña
+    # pero esto podemos cambiarlo a otro usuario que tambien tenga los mismos privilegios que el superusuario 
+    # esto se hace con el -u : sudo -u chavo /comando/de/chavo
+    sudo -u postgres psql -c "ALTER USER postgres WITH PASSWORD '{$password_postgres}';"
+    read -n1 -s -r -p "PRESIONE [ENTER] PARA CONTINUAR ... "
 }
