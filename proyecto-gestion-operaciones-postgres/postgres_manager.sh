@@ -42,17 +42,66 @@ uninstall_postgreSQL () {
     echo -e "\n"
     echo $password_sudo | sudo -S systemctl stop postgresql.service
     echo $password_sudo | sudo -S apt-get -y --purge remove postgresql\*
-    echo $password_sudo | sudo -S rm -rf /etc/postgresql
+    echo $password_sudo | sudo
+    -S rm -rf /etc/postgresql
     echo $password_sudo | sudo -S rm -rf /etc/postgresql-common
     echo $password_sudo | sudo -S rm -r /etc/postgresql-common
     echo $password_sudo | sudo -S rm -rf /var/lib/postgresql
     echo $password_sudo | sudo -S rm -r /var/lib/postgresql
     echo $password_sudo | sudo -S rm -r /etc/postgresql
-    echo $password_sudo | sudo -S userdel -r postgres
-    echo $password_sudo | sudo -S groupdel postgresql
+    echo $password_sudo | sudo -S userdel -r postgres # eliminado el usuario
+    echo $password_sudo | sudo -S groupdel postgresql # elimando el grupo
 
     read -n 1 -s -r -p "PRESIONE [ENTER] PARA CONTINUAR ... " # -r enter 
 }
+
+while :
+do
+    clear
+    #Desplegar el menú de opciones
+    echo "_________________________________________"
+    echo "PGUTIL - Programa de Utilidad de Postgres"
+    echo "_________________________________________"
+    echo "                MENÚ PRINCIPAL           "
+    echo "_________________________________________"
+    echo "1. Instalar Postgres"
+    echo "2. Desinstalar Postgres"
+    echo "3. Crear Backup"
+    echo "4. Restaurar Backup"
+    echo "5. Salir"
+
+    read -n1 -e -p "\nIngrese una opción [1-5] : " option
+
+    case $option in
+        1)
+            install_postgreSQL
+            sleep 3
+            ;;
+        2)
+            uninstall_postgresSQL
+            sleep 3
+            ;;
+        3)
+            echo -e "\n"
+            read -p "Ingrese el nombre de la ruta del directorio para almacenar el backup " name_path_backup
+            sleep 3
+            ;;
+        4)
+            echo -e "\n"
+            read -p "Ingrese el nombre de la ruta del directorio donde se encuentra el backup " path_backup
+            sleep 3
+            ;;
+        5)
+            echo -e "Saliendo del programa ... "
+            sleep 2
+            exit 0
+            ;;
+        *) 
+            echo -e "\nOpcion incorrecta"
+            sleep 2
+            ;;
+    esac
+done
 
 
 
