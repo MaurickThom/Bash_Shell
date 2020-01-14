@@ -20,10 +20,11 @@ install_postgreSQL () {
     else
         echo -e "\n"
         read -s -p "Ingrese la contraseña del sudo : " password_sudo # -s silent
+        echo -e "\n" 
         read -s -p "Ingrese la contraseña que utilizará en postgres : " password_postgres
         echo -e "\n"
         echo $password_sudo | sudo -S apt update # lo que -S es leer el output de echo y colocarlo como input al sudo --stdin
-        echo $password_sudo | sudo -S apt-get -y install postgresql postgresl-contrib # -y:  yes a todas las preguntas
+        echo $password_sudo | sudo -S apt-get -y install postgresql postgresql-contrib # -y:  yes a todas las preguntas
         # cuando ejecutados algun comando con sudo , por defecto el usuario es root y posteriormente nos pide la contraseña
         # pero esto podemos cambiarlo a otro usuario que tambien tenga los mismos privilegios que el superusuario 
         # esto se hace con el -u : sudo -u chavo /comando/de/chavo
@@ -57,7 +58,7 @@ uninstall_postgreSQL () {
 
 create_backup () {
     verifyPostgres=$(which psql)
-    if [[ $verifyPostgres -eq 0 ]] ;then
+    if [[ $verifyPostgres = 0 ]] ;then
         echo -e "\nNo existe la base de datos postgres"
         sleep 1
         return
@@ -69,7 +70,8 @@ create_backup () {
     fi
     echo -e "\n Listando las base de datos ... "
     sudo -u postgres psql -c "\l"
-    read -p "Digite el nombre de la base de datos para crear el backup : " db_name
+    echo -e "\n"
+    read -p "Digite el nombre de la base de datos para crear el backup : " db_name # aqui ire el nombre de la base de datos que aparescaa en la tabla, atributo Name
     echo -e "\n"
     
     read -s -p "Ingresa la contraseña de sudo : " password_sudo
@@ -84,7 +86,7 @@ create_backup () {
 
 restore_backup (){
     verifyPostgres=$(which psql)
-    if [[ $verifyPostgres -eq 0 ]] ;then
+    if [[ $verifyPostgres = 0 ]] ;then
         echo -e "\nNo existe la base de datos postgres"
         sleep 1
         return 
@@ -97,18 +99,18 @@ restore_backup (){
     echo "Listando respaldos"
     ls -lah $1/*.bak
     echo -e "\n"
-    read -p "Ingrese el nombre del backup a restaurar : " backup_name
+    read -p "Ingrese el nombre del backup a restaurar : " backup_name # 
     if [[ !( -f "$1/$backup_name" ) ]] ;then
         echo -e "\n $1/$backup_name no existe ... "
         sleep 1
         return 
     fi
     echo -e "\n"
-    read -p "Ingrese el nombre de la base de datos destino " db_path
+    read -p "Ingrese el nombre de la base de datos destino " db_path # aquí
 
     # verificando que la base de datos de destino exista $db_path
     # -lqt : listar base de datos , quitar las cabeceras HEADERS
-    verify_db=$(sudo -u postgres -lqt | cut -d \| -f 1 | grep -wq $db_path) # cut ... en una sola fila
+    verify_db=$(sudo -u postgres psql -lqt | cut -d \| -f 1 | grep -wq $db_path) # cut ... en una sola fila
     if [[ $? -eq 0 ]]; then
         echo -e "\nRestaurando en la base de datos destino: $db_path"
     else
