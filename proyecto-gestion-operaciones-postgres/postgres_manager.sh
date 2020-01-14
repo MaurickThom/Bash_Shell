@@ -76,11 +76,50 @@ create_backup () {
     echo -e "\nEstableciendo permisos permisos al directorio $1 ..."
     echo $password_sudo | sudo -S chmod 755 $1 
     echo "Realizando backup ... "
-    sudo -u postgres pg_dump -Fc $db_name > "$1/db_name$current_date.bak" # comando para sacer backup en postgres
-    echo "Backup realizado correctamente en la ubicacion : $1/db_name$current_date.bak"
+    sudo -u postgres pg_dump -Fc $db_name > "$1/$db_name$current_date.bak" # comando para sacer backup en postgres
+    echo "Backup realizado correctamente en la ubicacion : $1/$db_name$current_date.bak"
     echo -e "\n"
     read -n1 -s -r -p "PRESIONE [ENTER] para continuar..."
 }
+
+restore_backup (){
+    verifyPostgres=$(which psql)
+    if [[ $? -eq 0 ]] ;then
+        echo -e "\nNo existe la base de datos postgres"
+        sleep 1
+        return ;;
+    fi
+    if [[ !( -d $1 ) ]] ;then
+        echo -e "\nLa ruta del directorio $1 no existe"
+        sleep 1
+        return ;;
+    fi
+    echo "Listando respaldos"
+    ls -lah $1/*.bak
+    echo -e "\n"
+    read -p "Ingrese el nombre del backup a restaurar : " backup_name
+    if [[ !( -f "$1/$backup_name" ) ]] ;then
+        echo -e "\n $1/$backup_name no existe ... "
+        sleep 1
+        return ;;
+    fi
+    echo -e "\n"
+    read -p "Ingrese el nombre de la base de datos destino " db_path
+
+    # verificando que la base de datos de destino exista $db_path
+    verify_db=$(sudo -u postgres -lqt | cut -d \| -f 1 | grep -wq $db_path)
+    if [ $? -eq 0 ]; then
+        echo -e "\nRestaurando en la base de datos destino: $db_path"
+    else
+        sudo -u postgres psql -c "CREATE DATABASE $db_path"
+    fi
+    echo "Restaurando backup ... "
+
+
+
+    read -n 1 -s -r -p "PRESIONE [ENTER] para continuar..."
+}
+
 
 while :
 do
@@ -102,21 +141,19 @@ do
     case $option in
         1)
             install_postgreSQL
-            sleep 3
             ;;
         2)
             uninstall_postgreSQL
-            sleep 3
             ;;
         3)
             echo -e "\n"
             read -p "Ingrese el nombre de la ruta del directorio para almacenar el backup " name_path_backup
-            sleep 3
+            create_backup $name_path_backup
             ;;
         4)
             echo -e "\n"
             read -p "Ingrese el nombre de la ruta del directorio donde se encuentra el backup " path_backup
-            sleep 3
+            restore_backup $path_backup
             ;;
         5)
             echo -e "Saliendo del programa ... "
