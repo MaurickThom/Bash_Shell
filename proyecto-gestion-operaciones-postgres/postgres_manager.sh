@@ -54,6 +54,34 @@ uninstall_postgreSQL () {
     read -n1 -s -r -p "PRESIONE [ENTER] PARA CONTINUAR ... " # -r enter 
 }
 
+
+create_backup () {
+    verifyPostgres=$(which psql)
+    if [[ $? -eq 0 ]] ;then
+        echo -e "\nNo existe la base de datos postgres"
+        sleep 1
+        return ;;
+    fi
+    if [[ !( -d $1 ) ]] ;then
+        echo -e "\nLa ruta del directorio $1 no existe"
+        sleep 1
+        return ;;
+    fi
+    echo -e "\n Listando las base de datos ... "
+    sudo -u postgres psql -c "\l"
+    read -p "Digite el nombre de la base de datos para crear el backup : " db_name
+    echo -e "\n"
+    
+    read -s -p "Ingresa la contraseña de sudo : " password_sudo
+    echo -e "\nEstableciendo permisos permisos al directorio $1 ..."
+    echo $password_sudo | sudo -S chmod 755 $1 
+    echo "Realizando backup ... "
+    sudo -u postgres pg_dump -Fc $db_name > "$1/db_name$current_date.bak" # comando para sacer backup en postgres
+    echo "Backup realizado correctamente en la ubicacion : $1/db_name$current_date.bak"
+    echo -e "\n"
+    read -n1 -s -r -p "PRESIONE [ENTER] para continuar..."
+}
+
 while :
 do
     clear
