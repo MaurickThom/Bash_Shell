@@ -107,16 +107,19 @@ restore_backup (){
     read -p "Ingrese el nombre de la base de datos destino " db_path
 
     # verificando que la base de datos de destino exista $db_path
-    verify_db=$(sudo -u postgres -lqt | cut -d \| -f 1 | grep -wq $db_path)
-    if [ $? -eq 0 ]; then
+    # -lqt : listar base de datos , quitar las cabeceras HEADERS
+    verify_db=$(sudo -u postgres -lqt | cut -d \| -f 1 | grep -wq $db_path) # cut ... en una sola fila
+    if [[ $? -eq 0 ]]; then
         echo -e "\nRestaurando en la base de datos destino: $db_path"
     else
         sudo -u postgres psql -c "CREATE DATABASE $db_path"
     fi
     echo "Restaurando backup ... "
 
+    sudo -u postgres pg_restore -Fc -d $db_path "$1/$backup_name"
 
-
+    echo "Listar la base de datos"
+    sudo -u postgres psql -c "\l"
     read -n 1 -s -r -p "PRESIONE [ENTER] para continuar..."
 }
 
