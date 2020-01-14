@@ -57,15 +57,15 @@ uninstall_postgreSQL () {
 
 create_backup () {
     verifyPostgres=$(which psql)
-    if [[ $? -eq 0 ]] ;then
+    if [[ $verifyPostgres -eq 0 ]] ;then
         echo -e "\nNo existe la base de datos postgres"
         sleep 1
-        return ;;
+        return
     fi
     if [[ !( -d $1 ) ]] ;then
         echo -e "\nLa ruta del directorio $1 no existe"
         sleep 1
-        return ;;
+        return
     fi
     echo -e "\n Listando las base de datos ... "
     sudo -u postgres psql -c "\l"
@@ -84,15 +84,15 @@ create_backup () {
 
 restore_backup (){
     verifyPostgres=$(which psql)
-    if [[ $? -eq 0 ]] ;then
+    if [[ $verifyPostgres -eq 0 ]] ;then
         echo -e "\nNo existe la base de datos postgres"
         sleep 1
-        return ;;
+        return 
     fi
     if [[ !( -d $1 ) ]] ;then
         echo -e "\nLa ruta del directorio $1 no existe"
         sleep 1
-        return ;;
+        return 
     fi
     echo "Listando respaldos"
     ls -lah $1/*.bak
@@ -101,7 +101,7 @@ restore_backup (){
     if [[ !( -f "$1/$backup_name" ) ]] ;then
         echo -e "\n $1/$backup_name no existe ... "
         sleep 1
-        return ;;
+        return 
     fi
     echo -e "\n"
     read -p "Ingrese el nombre de la base de datos destino " db_path
@@ -150,16 +150,16 @@ do
             ;;
         3)
             echo -e "\n"
-            read -p "Ingrese el nombre de la ruta del directorio para almacenar el backup " name_path_backup
+            read -p "Ingrese el nombre de la ruta del directorio para almacenar el backup : " name_path_backup
             create_backup $name_path_backup
             ;;
         4)
             echo -e "\n"
-            read -p "Ingrese el nombre de la ruta del directorio donde se encuentra el backup " path_backup
+            read -p "Ingrese el nombre de la ruta del directorio donde se encuentra el backup : " path_backup
             restore_backup $path_backup
             ;;
         5)
-            echo -e "Saliendo del programa ... "
+            echo -e "\nSaliendo del programa ... "
             sleep 2
             exit 0
             ;;
